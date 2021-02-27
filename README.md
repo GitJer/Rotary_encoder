@@ -12,7 +12,7 @@ The specific encoder I use gives 600 pulses per 360 degrees rotation. For each p
 I have also tried a cheap simple rotary encoder, but only when turning very slowly does the result make any sense.
 
 ## Other code
-This isn't the first code to read a rotary encoder using the PIO, see e.g. [pimoroni-pico](https://github.com/pimoroni/pimoroni-pico/blob/encoder-pio/drivers/encoder-pio/encoder.pio), which does timing and rudimentary debouncing.
+This isn't the first code to read a rotary encoder using the PIO, see e.g. [pimoroni-pico](https://github.com/pimoroni/pimoroni-pico/blob/encoder-pio/drivers/encoder-pio/encoder.pio), which does timing and rudimentary debouncing. And it lets you choose non-consecutive pins. 
 
 But this code uses interrupts in the PIO code to signal rotations to the C++ code. And maybe this can best be considered as an exercise on how to make something useful with:
 - 19 `jmp` instructions (one hidden in a `mov exec`)

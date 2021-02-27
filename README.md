@@ -9,6 +9,8 @@ The specific encoder I use gives 600 pulses per 360 degrees rotation. For each p
 
 <img src="Quadrature_Diagram.png" width="300">
 
+I have also tried a cheap simple rotary encoder, but only when turning very slowly does the result make any sense.
+
 ## Other code
 This isn't the first code to read a rotary encoder using the PIO, see e.g. [pimoroni-pico](https://github.com/pimoroni/pimoroni-pico/blob/encoder-pio/drivers/encoder-pio/encoder.pio), which does timing and rudimentary debouncing.
 

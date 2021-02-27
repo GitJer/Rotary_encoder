@@ -43,23 +43,23 @@ The first 16 instructions form a jump table. The addresses represent the 12 lega
 
 ```
 A'B'A B = meaning;                                                action
------------------------------------------------------------------------------------------------------------
-0 0 0 0 = transition from 00 to 00 = no change in reading;        do a jump to read in new values (line 17)
+--------------------------------------------------------------------------------------
+0 0 0 0 = transition from 00 to 00 = no change in reading;        do a jump to line 17
 0 0 0 1 = transition from 00 to 01 = clockwise rotation;          do a jump to CW  
 0 0 1 0 = transition from 00 to 10 = counter clockwise rotation;  do a jump to CCW
-0 0 1 1 = transition from 00 to 11 = error;                       do a jump to read in new values (line 17)
+0 0 1 1 = transition from 00 to 11 = error;                       do a jump to line 17
 0 1 0 0 = transition from 01 to 00 = counter clockwise rotation;  do a jump to CCW 
-0 1 0 1 = transition from 01 to 01 = no change in reading;        do a jump to read in new values (line 17)
-0 1 1 0 = transition from 01 to 10 = error;                       do a jump to read in new values (line 17)
+0 1 0 1 = transition from 01 to 01 = no change in reading;        do a jump to line 17
+0 1 1 0 = transition from 01 to 10 = error;                       do a jump to line 17
 0 1 1 1 = transition from 01 to 11 = clockwise rotation;          do a jump to CW  
 1 0 0 0 = transition from 10 to 00 = clockwise rotation;          do a jump to CW  
-1 0 0 1 = transition from 10 to 01 = error;                       do a jump to read in new values (line 17)
-1 0 1 0 = transition from 10 to 10 = no change in reading;        do a jump to read in new values (line 17)
+1 0 0 1 = transition from 10 to 01 = error;                       do a jump to line 17
+1 0 1 0 = transition from 10 to 10 = no change in reading;        do a jump to line 17
 1 0 1 1 = transition from 10 to 11 = counter clockwise rotation;  do a jump to CCW
-1 1 0 0 = transition from 11 to 00 = error;                       do a jump to read in new values (line 17)
+1 1 0 0 = transition from 11 to 00 = error;                       do a jump to line 17
 1 1 0 1 = transition from 11 to 01 = counter clockwise rotation;  do a jump to CCW
 1 1 1 0 = transition from 11 to 10 = clockwise rotation;          do a jump to CW  
-1 1 1 1 = transition from 11 to 11 = no change in reading;        do a jump to read in new values (line 17)
+1 1 1 1 = transition from 11 to 11 = no change in reading;        do a jump to line 17
 ```
 The jump to `CW` is a piece of code that sets `irq 0` and then jumps to line 17, the jump to `CCW` sets `irq 1` and then jumps to line 17.
 In the C++ code, the `irq 0` causes a counter called `rotation` to be increased, the `irq 1` causes it to be decreased.

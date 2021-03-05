@@ -1,6 +1,6 @@
 
 .program pio_rotary_encoder
-
+.wrap_target
 .origin 0        ; The jump table has to start at 0
                  ; it contains the correct jumps for each of the 16  
                  ; combination of 4 bits formed by A'B'AB
@@ -32,10 +32,10 @@ pc_start:        ; this is the entry point for the program
     in pins 2    ; read the current values of A and B and use 
                  ; them to initialize the previous values (A'B')
 read:
-    mov OSR ISR  ; to OSR is (after the next instruction) used to shift 
+    mov OSR ISR  ; the OSR is (after the next instruction) used to shift 
                  ; the two bits with the previous values into the ISR
-    in NULL 32   ; clear the ISR, isn't there another way to do this?
-    out ISR 2    ; shift the previous value into the ISR
+    out ISR 2    ; shift the previous value into the ISR. This also sets
+                 ; all other bits in the ISR to 0
     in pins 2    ; shift the current value into the ISR
                  ; the 16 LSB of the ISR now contain 000000000000A'B'AB
                  ; this represents a jmp instruction to the address A'B'AB 
@@ -45,4 +45,7 @@ CW:              ; a clockwise rotation was detected
     jmp read     ; jump to reading the current values of A and B
 CCW:             ; a counter clockwise rotation was detected
     irq 1        ; signal a counter clockwise rotation via an IRQ
-    jmp read     ; jump to reading the current values of A and B
+;    jmp read    ; jump to reading the current values of A and B.
+                 ; the jmp isn't needed because of the .wrap, and the first 
+                 ; statement of the program happens to be a jmp read
+.wrap

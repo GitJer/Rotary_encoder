@@ -1,3 +1,11 @@
+#This repository is updated and moved to [here](https://github.com/GitJer/Some_RPI-Pico_stuff/tree/main/Rotary_encoder)
+
+Please use the new repository!
+
+OLD TEXT:
+
+
+
 # Rotary encoder for Raspberry Pi Pico using PIO code
 
 This software reads a rotary encoder with the Raspberry Pi Pico using PIO code. 
